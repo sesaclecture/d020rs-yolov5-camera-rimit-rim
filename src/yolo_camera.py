@@ -25,16 +25,14 @@ while True:
         x1, y1, x2, y2 = map(int, obj[:4])
         
         # TODO: 인식된 정확도(confidence)와 클래스를 label로 구성
-        # confidence
-        conf = float(obj[4])
-        # 클래스 id
-        cls = int(obj[5])
+        conf = float(obj[4])        # confidence
+        cls = int(obj[5])        # 클래스 id
 
         # TODO: OpenCV를 이용해서 해당 좌표에 사각형과 text를 출력
         obj_info = list(map(int, obj))
         # print(f"Object {i}: {model.names[obj_info[5]]}")
         cv2.rectangle(frame, (x1, y1), (x1 + x2, y1 + y2), (0, 255, 0), 2)
-        cv2.putText(frame, model.names[cls], (x1, y1 + 30), cv2.FONT_HERSHEY_SIMPLEX, 3, (0, 255, 0), 3)
+        cv2.putText(frame, model.names[cls], (x1 + 40, y1), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
 
     # TODO: 화면 표시
     cv2.imshow("yolo_camera", frame)
